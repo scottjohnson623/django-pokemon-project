@@ -11,17 +11,17 @@ export default {
   components: {
     PokemonCard,
   },
-  async asyncData({ $axios, params }) {
-    try {
-      const pokemon = await $axios.$get(`/pokemon/${params.id}`)
-      return { pokemon }
-    } catch (e) {
-      return { pokemons: {} }
-    }
-  },
   data() {
     return {
       pokemon: {},
+    }
+  },
+  async fetch({ params }) {
+    try {
+      const pokemon = await this.$axios.$get(`/pokemon/${params.id}`)
+      this.pokemon = pokemon
+    } catch (e) {
+      this.pokemon = {}
     }
   },
   head() {

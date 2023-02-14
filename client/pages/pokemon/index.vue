@@ -9,7 +9,8 @@
         sm="3"
         md="4"
       >
-        <pokemon-card :pokemon="pokemon"></pokemon-card>
+        AAAAA
+        <pokemon-card :pokemon="pokemon" />
       </v-col>
     </v-row>
   </v-container>
@@ -22,17 +23,17 @@ export default {
   components: {
     PokemonCard,
   },
-  async asyncData({ $axios, params }) {
-    try {
-      const pokemons = await $axios.$get(`/pokemon/`)
-      return { pokemons: pokemons.results }
-    } catch (e) {
-      return { pokemons: [] }
-    }
-  },
   data() {
     return {
       pokemons: [],
+    }
+  },
+  async fetch() {
+    try {
+      const pokemons = await this.$axios.$get(`/pokemon/`)
+      this.pokemons = pokemons.results
+    } catch (e) {
+      this.pokemons = []
     }
   },
   head() {
