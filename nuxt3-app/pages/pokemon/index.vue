@@ -6,10 +6,9 @@
         v-for="pokemon in pokemons"
         :key="pokemon.id"
         cols="12"
-        sm="3"
-        md="4"
+        sm="4"
+        md="2"
       >
-        AAAAA
         <pokemon-card :pokemon="pokemon" />
       </v-col>
     </v-row>
@@ -17,8 +16,7 @@
 </template>
 
 <script>
-import PokemonCard from '~/components/PokemonCard.vue'
-
+import PokemonCard from '~/components/PokemonCard.vue';
 export default {
   components: {
     PokemonCard,
@@ -26,20 +24,22 @@ export default {
   data() {
     return {
       pokemons: [],
-    }
+    };
   },
-  async fetch() {
+  async mounted() {
     try {
-      const pokemons = await this.$axios.$get(`/pokemon/`)
-      this.pokemons = pokemons.results
+      const pokemons = await $fetch('http://localhost:8000/api/pokemon');
+      console.log(pokemons);
+      this.pokemons = pokemons.results;
     } catch (e) {
-      this.pokemons = []
+      console.log(e);
+      this.pokemons = [];
     }
   },
   head() {
     return {
       title: 'Pokemon list',
-    }
+    };
   },
-}
+};
 </script>

@@ -17,9 +17,9 @@ export default {
   head() {
     return {
       title: 'Home page',
-    }
+    };
   },
-}
+};
 </script>
 
 <style>
