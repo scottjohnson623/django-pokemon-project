@@ -1,9 +1,11 @@
 <template>
   <v-container class="d-flex flex-column w-80">
-    <v-img :src="pokemon.image_url" aspect-ratio="1" max-height="600px"/>
-    <div>   
-      <h1> {{ pokemon.name }} </h1> 
-      <v-chip v-for="(type, index) in pokemon.types" :key="index"> {{ type.name }} </v-chip>
+    <v-img :src="pokemon.image_url" aspect-ratio="1" max-height="600px" />
+    <div>
+      <h1>{{ pokemon.name }}</h1>
+      <v-chip v-for="(type, index) in pokemon.types" :key="index">
+        {{ type.name }}
+      </v-chip>
     </div>
   </v-container>
 </template>
@@ -16,6 +18,11 @@ export default {
       pokemon: {},
       pokemonExtendedDetails: {},
       drawer: false,
+    };
+  },
+  head() {
+    return {
+      title: "View Pokemon",
     };
   },
   async mounted() {
@@ -35,11 +42,6 @@ export default {
     } catch (e) {
       this.pokemonExtendedDetails = {};
     }
-  },
-  head() {
-    return {
-      title: 'View Pokemon',
-    };
   },
 };
 </script>

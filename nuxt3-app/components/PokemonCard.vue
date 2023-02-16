@@ -1,8 +1,8 @@
 <template>
-    <v-card :to="link" nuxt>
-      <v-img aspect-ratio="1" :src="pokemon.image_url"/>
-      <div class="text-h5 text-center pb-5"> {{ pokemon.name }} </div>
-    </v-card>
+  <v-card :to="link" nuxt>
+    <v-img aspect-ratio="1" :src="pokemon.image_url" />
+    <div class="text-h5 text-center pb-5">{{ pokemon.name }}</div>
+  </v-card>
 </template>
 
 <script>
@@ -15,7 +15,7 @@ export default {
   },
   computed: {
     link() {
-      return 'pokemon/' + this.pokemon.id;
+      return "pokemon/" + this.pokemon.id;
     },
   },
 };

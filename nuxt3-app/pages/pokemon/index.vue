@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import PokemonCard from '~/components/PokemonCard.vue';
+import PokemonCard from "~/components/PokemonCard.vue";
 export default {
   components: {
     PokemonCard,
@@ -25,19 +25,19 @@ export default {
       pokemons: [],
     };
   },
+  head() {
+    return {
+      title: "Pokemon list",
+    };
+  },
   async mounted() {
     try {
-      const pokemons = await $fetch('http://localhost:8000/api/pokemon');
+      const pokemons = await $fetch("http://localhost:8000/api/pokemon");
       this.pokemons = pokemons.results;
     } catch (e) {
       console.log(e);
       this.pokemons = [];
     }
-  },
-  head() {
-    return {
-      title: 'Pokemon list',
-    };
   },
 };
 </script>
