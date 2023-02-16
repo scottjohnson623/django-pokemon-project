@@ -15,6 +15,7 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+VUE_APP_URL = os.environ.get('VUE_APP_URL', 'http://localhost:3000')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -49,9 +50,10 @@ INSTALLED_APPS = [
     'core'
 ]
 
-LOGIN_REDIRECT_URL = 'http://localhost:3000/pokemon'
-LOGOUT_REDIRECT_URL = 'http://localhost:3000'
+LOGIN_REDIRECT_URL = f'{VUE_APP_URL}/pokemon'
+LOGOUT_REDIRECT_URL = f'{VUE_APP_URL}/pokemon'
 
+ACCOUNT_LOGOUT_ON_GET = True
 SOCIALACCOUNT_LOGIN_ON_GET = True
 SOCIALACCOUNT_STORE_TOKENS = True
 
@@ -90,7 +92,7 @@ SESSION_COOKIE_SAMESITE = 'Lax'
 SESSION_COOKIE_HTTPONLY = True
 
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000',
+    VUE_APP_URL,
 )
 
 REST_FRAMEWORK = {
