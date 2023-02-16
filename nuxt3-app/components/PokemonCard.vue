@@ -1,7 +1,9 @@
 <template>
   <v-card :to="link" nuxt>
     <v-img aspect-ratio="1" :src="pokemon.image_url" />
-    <div class="text-h5 text-center pb-5">{{ pokemon.name }}</div>
+    <div class="text-h5 text-center pb-5 text-capitalize">
+      {{ pokemon.name }}
+    </div>
   </v-card>
 </template>
 

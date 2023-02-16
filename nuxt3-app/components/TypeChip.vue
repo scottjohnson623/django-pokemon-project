@@ -1,45 +1,42 @@
 <template>
-    <v-chip :color="typeColor[type.name]">
+  <v-chip :color="typeColor[type.name]">
     {{ type.name }}
-    </v-chip>
+  </v-chip>
 </template>
-  
+
 <script>
 export default {
-props: {
+  props: {
     type: {
-        type: Object,
-        default: () => {},
+      type: Object,
+      default: () => {},
     },
-},
-data() {
+  },
+  data() {
     return {
-        typeColor: {
-            normal: '#A8A77A',
-            fire: '#EE8130',
-            water: 'blue',
-            electric: '#F7D02C',
-            grass: '#7AC74C',
-            ice: '#96D9D6',
-            fighting: '#C22E28',
-            poison: '#A33EA1',
-            ground: '#E2BF65',
-            flying: '#A98FF3',
-            psychic: '#F95587',
-            bug: '#A6B91A',
-            rock: '#B6A136',
-            ghost: '#735797',
-            dragon: '#6F35FC',
-            dark: '#705746',
-            steel: '#B7B7CE',
-            fairy: '#D685AD',
-        }
+      typeColor: {
+        normal: '#A8A77A',
+        fire: '#EE8130',
+        water: 'blue',
+        electric: '#F7D02C',
+        grass: '#7AC74C',
+        ice: '#96D9D6',
+        fighting: '#C22E28',
+        poison: '#A33EA1',
+        ground: '#E2BF65',
+        flying: '#A98FF3',
+        psychic: '#F95587',
+        bug: '#A6B91A',
+        rock: '#B6A136',
+        ghost: '#735797',
+        dragon: '#6F35FC',
+        dark: '#705746',
+        steel: '#B7B7CE',
+        fairy: '#D685AD',
+      },
     }
-}
+  },
 }
 </script>
 
-<style scoped> 
-
-</style>
-  
+<style scoped></style>

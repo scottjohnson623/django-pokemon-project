@@ -12,7 +12,7 @@ class TypeViewset(viewsets.ModelViewSet):
     queryset = Type.objects.all()
 
 def logged_in_user(request):
-    print(f'User {request.user}')
-    print(f'User {request.user.is_authenticated}')
-    return HttpResponse(request.user)
-    return HttpResponse(None)
+    if request.user.is_authenticated:
+        user = User.objects.get(username=request.user)
+        return HttpResponse(user)
+    return HttpResponse()

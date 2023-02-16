@@ -1,14 +1,23 @@
 <template>
   <v-container class="d-flex flex-column w-80 back-button">
-    <div class="d-absolute mt-3 ml-3" @click="$router.push({name: 'pokemon'})">    
+    <div
+      class="d-absolute mt-3 ml-3"
+      @click="$router.push({ name: 'pokemon' })"
+    >
       <v-icon icon="mdi-keyboard-backspace" />
     </div>
-    <v-img :src="pokemon.image_url" aspect-ratio="1" max-height="600px" />
-      <span class="text-h3 text-center">{{ pokemon.name }} #{{ pokemonExtendedDetails.id }}
-        <type-chip v-for="(type, index) in pokemon.types" :key="index" class="align-self-center" :type="type">
-          {{ type.name }}
-        </type-chip>
-      </span>
+    <v-img :src="pokemon.image_url" aspect-ratio="1" max-height="500px" />
+    <span class="text-h3 text-center text-capitalize"
+      >{{ pokemon.name }} #{{ pokemonExtendedDetails.id }}
+      <type-chip
+        v-for="(type, index) in pokemon.types"
+        :key="index"
+        class="align-self-center"
+        :type="type"
+      >
+        {{ type.name }}
+      </type-chip>
+    </span>
   </v-container>
 </template>
 
