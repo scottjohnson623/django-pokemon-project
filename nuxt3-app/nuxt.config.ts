@@ -7,7 +7,7 @@ const { resolve } = createResolver(import.meta.url)
 export default defineNuxtConfig({
   app: {
     head: {
-      titleTemplate: '%s - client',
+      titleTemplate: '%s - Pokemans',
       title: 'Pokemans',
       htmlAttrs: {
         lang: 'en',
