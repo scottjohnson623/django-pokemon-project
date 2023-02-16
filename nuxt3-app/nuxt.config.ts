@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       titleTemplate: '%s - client',
-      title: 'client',
+      title: 'Pokemans',
       htmlAttrs: {
         lang: 'en',
       },

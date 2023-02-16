@@ -1,7 +1,6 @@
 <template>
   <v-app-bar color="fee8b7">
-    <v-app-bar-title
-      style="font-family: cursive"
+    <v-app-bar-title class="title"
       @click="$router.push({ name: 'pokemon' })"
     >
       Pokemon
@@ -16,5 +15,10 @@
 <style scoped>
 .v-application {
   background-color: #fee8b7;
+}
+.title {
+  font-family: cursive;
+  cursor: pointer;
+  font-size: 30px;
 }
 </style>
