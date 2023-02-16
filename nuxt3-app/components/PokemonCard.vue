@@ -15,10 +15,10 @@ export default {
   },
   computed: {
     link() {
-      return "pokemon/" + this.pokemon.id;
+      return 'pokemon/' + this.pokemon.id
     },
   },
-};
+}
 </script>
 
 <style>

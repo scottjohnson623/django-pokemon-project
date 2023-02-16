@@ -18,21 +18,21 @@
 export default {
   head() {
     return {
-      title: "Home page",
-    };
+      title: 'Home page',
+    }
   },
   mounted() {
     definePageMeta({
-      layout: "simple",
-    });
+      layout: 'simple',
+    })
   },
-};
+}
 </script>
 
 <style>
 header {
   min-height: 100vh;
-  background-image: url("https://images.alphacoders.com/235/235203.png");
+  background-image: url('https://images.alphacoders.com/235/235203.png');
   background-position: center;
   background-size: cover;
   position: relative;
