@@ -1,6 +1,5 @@
 <template>
   <v-container>
-    <h3>Pokemon</h3>
     <v-row>
       <v-col
         v-for="pokemon in pokemons"
@@ -29,7 +28,6 @@ export default {
   async mounted() {
     try {
       const pokemons = await $fetch('http://localhost:8000/api/pokemon');
-      console.log(pokemons);
       this.pokemons = pokemons.results;
     } catch (e) {
       console.log(e);

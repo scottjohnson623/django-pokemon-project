@@ -1,24 +1,31 @@
 <template>
-  <header>
-    <div class="text-box">
-      <h1>Pokemon</h1>
-      <p class="mt-3">Gotta catch em all</p>
-      <div class="mt-5">
-        <v-btn to="/pokemon" nuxt>
-          Explore <span class="ml-2">&rarr;</span>
-        </v-btn>
+  <div>
+    <header>
+      <div class="text-box">
+        <h1>Pokemon</h1>
+        <p class="mt-3">Gotta catch em all</p>
+        <div class="mt-5">
+          <v-btn to="/pokemon" nuxt>
+            Explore <span class="ml-2">&rarr;</span>
+          </v-btn>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
+  </div>
 </template>
 
 <script>
-export default {
+export default{ 
   head() {
     return {
       title: 'Home page',
     };
   },
+  mounted() {
+    definePageMeta({
+      layout: 'simple'
+    })
+  }
 };
 </script>
 

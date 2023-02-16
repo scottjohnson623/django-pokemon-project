@@ -1,9 +1,7 @@
 <template>
-  <v-app>
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </v-app>
+  <div>
+    <slot />
+  </div>
 </template>
 
 <style scoped> 
