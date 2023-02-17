@@ -4,6 +4,7 @@
     <div class="text-h5 text-center pb-5 text-capitalize">
       {{ pokemon.name }}
     </div>
+    <v-icon icon="mdi-heart-circle-outline" class="float-right" color="grey" size="x-large"/>
   </v-card>
 </template>
 

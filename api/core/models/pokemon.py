@@ -1,5 +1,6 @@
 from django.db import models
 from .type import Type
+from django.contrib.auth.models import User
 
 
 class PokemonManager(models.Manager):
@@ -16,6 +17,9 @@ class Pokemon(models.Model):
     image_url = models.CharField(max_length=120)
     pokedex_number = models.PositiveBigIntegerField()
     types = models.ManyToManyField(Type)
+    favorited_users = models.ManyToManyField(
+        User, related_name="favorites", through="UserFavoritePokemon"
+    )
     objects = PokemonManager()
 
     def __str_(self):

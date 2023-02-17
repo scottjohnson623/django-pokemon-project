@@ -1,8 +1,7 @@
-from django.http import HttpResponse
+from django.http.response import JsonResponse
 from rest_framework import viewsets
-from .serializers import PokemonSerializer, TypeSerializer
+from .serializers import PokemonSerializer, TypeSerializer, UserSerializer
 from .models import Pokemon, Type
-from django.contrib.auth.models import User
 
 
 class PokemonViewSet(viewsets.ModelViewSet):
@@ -17,6 +16,5 @@ class TypeViewset(viewsets.ModelViewSet):
 
 def logged_in_user_view(request):
     if request.user.is_authenticated:
-        user = User.objects.get(username=request.user)
-        return HttpResponse(user)
-    return HttpResponse()
+        return JsonResponse(UserSerializer(request.user).data)
+    return JsonResponse()
