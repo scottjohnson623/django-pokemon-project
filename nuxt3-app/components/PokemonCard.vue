@@ -4,11 +4,20 @@
     <div class="text-h5 text-center pb-5 text-capitalize">
       {{ pokemon.name }}
     </div>
-    <v-icon icon="mdi-heart-circle-outline" class="float-right" color="grey" size="x-large"/>
+    <div style="cursor: pointer" @click.prevent="handleClick">
+      <v-icon
+        icon="mdi-heart-circle-outline"
+        class="float-right"
+        :color="iconColor"
+        size="x-large"
+      />
+    </div>
   </v-card>
 </template>
 
 <script>
+import { useAuthStore } from '~~/stores/auth'
+import apiUrls from '~~/constants/apiUrls'
 export default {
   props: {
     pokemon: {
@@ -19,6 +28,40 @@ export default {
   computed: {
     link() {
       return 'pokemon/' + this.pokemon.id
+    },
+    user() {
+      return useAuthStore().user
+    },
+    isFavorited() {
+      return this.user.favorites.includes(this.pokemon.id)
+    },
+    iconColor() {
+      return this.isFavorited ? 'red' : 'grey'
+    },
+  },
+  methods: {
+    handleClick() {
+      if (this.isFavorited) {
+        this.user.favorites = this.user.favorites.filter(
+          (id) => id !== this.pokemon.id
+        )
+        $fetch(apiUrls.UNFAVORITE, {
+          credentials: 'include',
+          body: {
+            pokemon_id: this.pokemon.id,
+          },
+          method: 'POST',
+        })
+      } else {
+        this.user.favorites.push(this.pokemon.id)
+        $fetch(apiUrls.FAVORITE, {
+          credentials: 'include',
+          body: {
+            pokemon_id: this.pokemon.id,
+          },
+          method: 'POST',
+        })
+      }
     },
   },
 }

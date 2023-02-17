@@ -1,6 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
 from .serializers import PokemonSerializer, TypeSerializer, UserSerializer
 from .models import Pokemon, Type, UserFavoritePokemon
@@ -24,6 +25,7 @@ def logged_in_user_view(request):
 
 
 @api_view(["POST"])
+@permission_classes([IsAuthenticated])
 def favorite_pokemon(request):
     data = request.data
     UserFavoritePokemon.objects.get_or_create(
@@ -34,7 +36,8 @@ def favorite_pokemon(request):
 
 
 @api_view(["POST"])
-def favorite_pokemon(request):
+@permission_classes([IsAuthenticated])
+def unfavorite_pokemon(request):
     data = request.data
     UserFavoritePokemon.objects.filter(
         user=request.user, pokemon=Pokemon.objects.get(id=data["pokemon_id"])
