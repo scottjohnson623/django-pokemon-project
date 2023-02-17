@@ -5,4 +5,8 @@ from .views import PokemonViewSet, TypeViewset, logged_in_user_view, favorite_po
 router = DefaultRouter()
 router.register(r"pokemon", PokemonViewSet)
 router.register(r"types", TypeViewset)
-urlpatterns = [path("", include(router.urls)), path("me", logged_in_user_view), path(f'favorite_pokemon', favorite_pokemon)]
+urlpatterns = [
+    path("", include(router.urls)),
+    path("me", logged_in_user_view),
+    path(f"favorite_pokemon", favorite_pokemon),
+]

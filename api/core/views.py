@@ -15,16 +15,28 @@ class TypeViewset(viewsets.ModelViewSet):
     serializer_class = TypeSerializer
     queryset = Type.objects.all()
 
-@api_view(['GET'])
+
+@api_view(["GET"])
 def logged_in_user_view(request):
     if request.user.is_authenticated:
         return Response(UserSerializer(request.user).data)
     return Response()
 
-@api_view(['POST'])
+
+@api_view(["POST"])
 def favorite_pokemon(request):
     data = request.data
-    print(data)
-    UserFavoritePokemon.objects.get_or_create(user=request.user, pokemon=Pokemon.objects.get(id=data['pokemon_id']))
-    
-    return Response(status= status.HTTP_200_OK)
+    UserFavoritePokemon.objects.get_or_create(
+        user=request.user, pokemon=Pokemon.objects.get(id=data["pokemon_id"])
+    )
+
+    return Response(status=status.HTTP_200_OK)
+
+
+@api_view(["POST"])
+def favorite_pokemon(request):
+    data = request.data
+    UserFavoritePokemon.objects.filter(
+        user=request.user, pokemon=Pokemon.objects.get(id=data["pokemon_id"])
+    ).delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
