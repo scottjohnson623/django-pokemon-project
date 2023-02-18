@@ -11,13 +11,13 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from corsheaders.defaults import default_headers
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-VUE_APP_URL = os.environ.get("VUE_APP_URL", "http://localhost:3000")
-
+VUE_APP_URL = os.environ.get("VUE_APP_URL", "http://localhost")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["backend", ".localhost"]
 
 
 # Application definition
@@ -62,6 +62,9 @@ SOCIALACCOUNT_STORE_TOKENS = True
 
 AUTHENTICATION_BACKENDS = ["allauth.account.auth_backends.AuthenticationBackend"]
 
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
         "SCOPE": [
@@ -80,19 +83,21 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
+    "corsheaders.middleware.CorsPostCsrfMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
-CSRF_COOKIE_SAMESITE = "Lax"
+CORS_REPLACE_HTTPS_REFERER = True
 CORS_EXPOSE_HEADERS = ["Content-Type", "X-CSRFToken"]
 CORS_ALLOW_CREDENTIALS = True
-CSRF_COOKIE_HTTPONLY = True
-SESSION_COOKIE_SAMESITE = "Lax"
-SESSION_COOKIE_HTTPONLY = True
+CORS_ORIGIN_WHITELIST = [f"{VUE_APP_URL}", "http://localhost:8000"]
+CORS_ALLOW_HEADERS = default_headers
+CORS_ALLOWED_ORIGIN_REGEXES = [f"{VUE_APP_URL}(:\d*)?\/*"]
 
-CORS_ORIGIN_WHITELIST = (VUE_APP_URL,)
+CSRF_COOKIE_SAMESITE = "Lax"
+CSRF_TRUSTED_ORIGINS = [f"{VUE_APP_URL}", "http://localhost:8000", "http://localhost:3000"]
+
 
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
