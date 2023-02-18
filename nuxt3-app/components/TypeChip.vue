@@ -34,9 +34,9 @@ export default {
         steel: '#B7B7CE',
         fairy: '#D685AD',
       },
-    }
+    };
   },
-}
+};
 </script>
 
 <style scoped></style>

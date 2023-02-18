@@ -14,7 +14,7 @@
     <v-list color="transparent">
       <v-list-item
         v-if="user"
-        :title="`Hello, ${user}!`"
+        :title="user.username"
         class="pb-3 font-weight-bold"
       ></v-list-item>
       <v-list-item prepend-icon="mdi-account-box" title="Account"></v-list-item>
@@ -27,15 +27,15 @@
 </template>
 
 <script>
-import { useAuthStore } from '~~/stores/auth'
+import { useAuthStore } from '~~/stores/auth';
 
 export default {
   computed: {
     user() {
-      return useAuthStore().user
+      return useAuthStore().user;
     },
   },
-}
+};
 </script>
 <style scoped>
 .v-application {

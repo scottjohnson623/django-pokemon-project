@@ -19,14 +19,14 @@ export default {
   head() {
     return {
       title: 'Home page',
-    }
+    };
   },
   mounted() {
     definePageMeta({
       layout: 'simple',
-    })
+    });
   },
-}
+};
 </script>
 
 <style>

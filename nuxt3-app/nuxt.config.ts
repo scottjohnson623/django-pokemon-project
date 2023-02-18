@@ -1,8 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { createResolver } from '@nuxt/kit'
-import vuetify from 'vite-plugin-vuetify'
+import { createResolver } from '@nuxt/kit';
+import vuetify from 'vite-plugin-vuetify';
 
-const { resolve } = createResolver(import.meta.url)
+const { resolve } = createResolver(import.meta.url);
 
 export default defineNuxtConfig({
   app: {
@@ -40,7 +40,7 @@ export default defineNuxtConfig({
         vuetify({
           styles: { configFile: resolve('./styles/settings.scss') },
         })
-      )
+      );
     },
   },
 
@@ -53,4 +53,4 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify'],
   },
-})
+});

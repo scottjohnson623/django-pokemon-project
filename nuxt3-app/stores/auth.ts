@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({ user: null }),
@@ -7,12 +7,12 @@ export const useAuthStore = defineStore('auth', {
       $fetch('http://localhost:8000/api/me', { credentials: 'include' }).then(
         (user) => {
           if (user) {
-            this.user = user
+            this.user = user;
           } else {
-            this.user = null
+            this.user = null;
           }
         }
-      )
+      );
     },
   },
-})
+});

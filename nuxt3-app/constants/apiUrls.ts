@@ -1,4 +1,4 @@
-const baseUrl = useRuntimeConfig().public.baseURL
+const baseUrl = useRuntimeConfig().public.baseURL;
 
 export default {
   POKEMON_ROOT_VIEW: baseUrl + 'api/pokemon',
@@ -6,4 +6,4 @@ export default {
   LOGGED_IN_USER: baseUrl + 'api/me',
   FAVORITE: baseUrl + 'api/favorite_pokemon',
   UNFAVORITE: baseUrl + 'api/unfavorite_pokemon',
-}
+};
