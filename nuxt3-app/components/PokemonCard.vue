@@ -2,7 +2,7 @@
   <v-card :to="link" nuxt>
     <v-img aspect-ratio="1" :src="pokemon.image_url" class="mt-2" />
     <div style="cursor: pointer" @click.prevent="handleClick">
-    <v-icon
+      <v-icon
         icon="mdi-heart-circle-outline"
         class="float-right"
         :color="iconColor"

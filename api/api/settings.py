@@ -63,7 +63,7 @@ SOCIALACCOUNT_STORE_TOKENS = True
 AUTHENTICATION_BACKENDS = ["allauth.account.auth_backends.AuthenticationBackend"]
 
 USE_X_FORWARDED_HOST = True
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
@@ -96,7 +96,11 @@ CORS_ALLOW_HEADERS = default_headers
 CORS_ALLOWED_ORIGIN_REGEXES = [f"{VUE_APP_URL}(:\d*)?\/*"]
 
 CSRF_COOKIE_SAMESITE = "Lax"
-CSRF_TRUSTED_ORIGINS = [f"{VUE_APP_URL}", "http://localhost:8000", "http://localhost:3000"]
+CSRF_TRUSTED_ORIGINS = [
+    f"{VUE_APP_URL}",
+    "http://localhost:8000",
+    "http://localhost:3000",
+]
 
 
 REST_FRAMEWORK = {
