@@ -21,8 +21,8 @@ export default {
   },
   async mounted() {
     try {
-      const pokemons = await makeApiCall(apiUrls.POKEMON_ROOT_VIEW);
-      this.pokemons = pokemons.results;
+      const pokemons = await makeApiCall(apiUrls.FAVORITE_POKEMONS);
+      this.pokemons = pokemons;
     } catch (e) {
       this.pokemons = [];
     }

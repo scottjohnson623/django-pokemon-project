@@ -6,4 +6,5 @@ export default {
   LOGGED_IN_USER: baseUrl + 'api/me',
   FAVORITE: baseUrl + 'api/favorite_pokemon',
   UNFAVORITE: baseUrl + 'api/unfavorite_pokemon',
+  FAVORITE_POKEMONS: baseUrl + 'api/favorites',
 };

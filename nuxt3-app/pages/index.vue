@@ -3,9 +3,9 @@
     <header>
       <div class="text-box">
         <h1>Pokemon</h1>
-        <p class="mt-3">Gotta catch em all</p>
+        <p class="mt-3">Can one every truly catch them all?</p>
         <div class="mt-5">
-          <v-btn to="/pokemon" nuxt>
+          <v-btn href="/pokemon">
             Explore <span class="ml-2">&rarr;</span>
           </v-btn>
         </div>
@@ -44,16 +44,17 @@ header {
   top: 15%;
   left: 10%;
   transform: translateY(-50%);
-  color: #fff;
 }
 
 .text-box h1 {
-  font-family: cursive;
   font-size: 5rem;
+  font-family: cursive;
 }
 
 .text-box p {
   font-size: 2rem;
   font-weight: lighter;
+  font-family: cursive;
+  color: black;
 }
 </style>
