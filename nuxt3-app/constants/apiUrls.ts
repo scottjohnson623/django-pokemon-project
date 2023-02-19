@@ -1,6 +1,7 @@
 const baseUrl = useRuntimeConfig().public.baseURL;
 
 export default {
+  BASE_URL: baseUrl,
   POKEMON_ROOT_VIEW: baseUrl + 'api/pokemon',
   POKEMON_DETAIL_VIEW: (pokemon) => `${baseUrl}api/pokemon/${pokemon.id}`,
   LOGGED_IN_USER: baseUrl + 'api/me',

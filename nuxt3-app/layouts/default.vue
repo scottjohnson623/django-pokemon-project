@@ -6,12 +6,13 @@
       </v-app-bar-title>
       <v-btn
         v-if="!user"
-        href="http://localhost:8000/google/login"
+        prepend-icon="mdi-google"
+        :href="`${apiUrls.BASE_URL}/google/login`"
         class="mr-5"
       >
         Login
       </v-btn>
-      <v-btn v-else href="http://localhost:8000/logout" class="mr-5">
+      <v-btn v-else :href="`${apiUrls.BASE_URL}/logout`" class="mr-5">
         Logout
       </v-btn>
     </v-app-bar>
@@ -41,8 +42,14 @@
 
 <script>
 import { useAuthStore } from '~~/stores/auth';
+import apiUrls from '~~/constants/apiUrls';
 
 export default {
+  data() {
+    return {
+      apiUrls,
+    };
+  },
   computed: {
     user() {
       return useAuthStore().user;
