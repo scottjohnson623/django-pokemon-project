@@ -2,7 +2,7 @@
   <div>
     <v-app-bar color="fee8b7">
       <v-app-bar-title class="title" @click="$router.push('/')">
-        Pokemon
+        Pokemans
       </v-app-bar-title>
       <v-btn
         v-if="!user"
