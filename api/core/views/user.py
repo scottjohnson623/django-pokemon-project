@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view, permission_classes, renderer_cla
 from rest_framework.renderers import JSONRenderer
 from ..serializers import UserSerializer
 
+
 @api_view(["GET"])
 @renderer_classes((JSONRenderer,))
 def logged_in_user_view(request):

@@ -6,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from ..serializers import PokemonSerializer
 from ..models import Pokemon, UserFavoritePokemon
 
+
 @api_view(["GET"])
 @renderer_classes((JSONRenderer,))
 @permission_classes((IsAuthenticated,))
