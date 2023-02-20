@@ -11,7 +11,6 @@ class Command(BaseCommand):
         more_pokemon_exist = True
         url = "https://pokeapi.co/api/v2/pokemon/"
         while more_pokemon_exist:
-            self.stdout.write(self.style.SUCCESS(url))
             request = requests.get(url).json()
             for pokemon in request["results"]:
                 name = pokemon["name"]
@@ -24,7 +23,6 @@ class Command(BaseCommand):
                     pokedex_number=pokemon_request["id"],
                 )
                 for type in pokemon_request["types"]:
-                    self.stdout.write(self.style.SUCCESS(type))
                     type_model = Type.objects.get(name=type["type"]["name"])
                     new_pokemon.types.add(type_model)
                 self.stdout.write(self.style.SUCCESS(f"Added pokemon {name}"))

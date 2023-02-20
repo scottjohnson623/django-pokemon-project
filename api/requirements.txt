@@ -19,6 +19,7 @@ idna==3.4
 oauthlib==3.2.2
 pipenv==2023.2.4
 platformdirs==3.0.0
+psycopg2==2.9.5
 pyasn1==0.4.8
 pycparser==2.21
 PyJWT==1.7.1

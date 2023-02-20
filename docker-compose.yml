@@ -28,4 +28,13 @@ services:
     container_name: frontend
     depends_on:
       - backend
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+    
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+volumes:
+  postgres_data:
 

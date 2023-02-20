@@ -6,7 +6,7 @@ from .views import (
     logged_in_user_view,
     favorite_pokemon,
     unfavorite_pokemon,
-    user_favorite_pokemon_view
+    user_favorite_pokemon_view,
 )
 
 router = DefaultRouter()

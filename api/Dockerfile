@@ -1,11 +1,11 @@
 FROM --platform=linux/amd64 python:3
 ENV PYTHONUNBUFFERED 1
-RUN mkdir /backend
-WORKDIR /backend
-ADD requirements.txt /backend/
+RUN mkdir /api
+WORKDIR /api
+ADD requirements.txt /api/
 COPY start.sh /start.sh
 
 RUN pip install -r requirements.txt
-ADD . /backend
+ADD . /api
 RUN ls -all
 CMD ["/start.sh"]
