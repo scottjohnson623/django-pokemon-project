@@ -2,6 +2,7 @@
   <v-card :to="link" nuxt>
     <v-img aspect-ratio="1" :src="pokemon.image_url" class="mt-2" />
     <like-button
+      v-if="user"
       :is-favorited="isFavorited"
       :do-disable="!user"
       size="x-large"

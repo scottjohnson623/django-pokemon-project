@@ -1,10 +1,14 @@
 <template>
-  <v-container class="d-flex flex-column w-80 back-button">
+  <v-container class="d-flex align-center justify-center h-screen" v-if="loading"> 
+  <v-progress-circular indeterminate size="x-large"/>
+  </v-container>
+  <v-container v-else class="d-flex flex-column w-80 back-button">
     <div class="d-absolute mt-3 ml-3 d-inline-flex justify-space-between">
       <div @click="$router.push({ name: 'pokemon' })">
         <v-icon icon="mdi-keyboard-backspace" />
       </div>
       <like-button
+      v-if="user"
         :is-favorited="isFavorited"
         :do-disable="!user"
         size="x-large"
@@ -76,6 +80,7 @@ export default {
       pokemonExtendedDetails: {},
       pokemonFlavorText: null,
       drawer: false,
+      loading: true,
     };
   },
   head() {
@@ -123,6 +128,7 @@ export default {
     } catch (e) {
       this.pokemonFlavorText = null;
     }
+    this.loading = false;
   },
   methods: {
     formatHeight(height) {
