@@ -55,9 +55,15 @@ export default {
       return useAuthStore().user;
     },
     links() {
-      const links = [{ icon: 'mdi-home', title: 'Home', to: 'pokemon' }];
+      const links = [
+        { icon: 'mdi-home', title: 'Home', to: { name: 'pokemon' } },
+      ];
       if (this.user) {
-        links.push({ icon: 'mdi-heart', title: 'Favorites', to: 'favorites' });
+        links.push({
+          icon: 'mdi-heart',
+          title: 'Favorites',
+          to: { name: 'favorites' },
+        });
       }
       return links;
     },

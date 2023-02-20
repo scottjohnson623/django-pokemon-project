@@ -1,15 +1,13 @@
 <template>
   <v-card :to="link" nuxt>
     <v-img aspect-ratio="1" :src="pokemon.image_url" class="mt-2" />
-    <div style="cursor: pointer" @click.prevent="handleClick">
-      <v-icon
-        icon="mdi-heart-circle-outline"
-        class="float-right"
-        :color="iconColor"
-        size="x-large"
-        style="position: absolute; top: 0; right: 0"
-      />
-    </div>
+    <like-button
+      :is-favorited="isFavorited"
+      :do-disable="!user"
+      size="x-large"
+      style="position: absolute; top: 0; right: 0"
+      @clicked="handleClick"
+    />
     <div class="text-h5 text-center pb-5 text-capitalize">
       {{ pokemon.name }}
     </div>
@@ -37,9 +35,6 @@ export default {
     },
     isFavorited() {
       return this.user?.favorites?.includes(this.pokemon.id);
-    },
-    iconColor() {
-      return this.isFavorited ? 'red' : 'grey';
     },
   },
   methods: {
