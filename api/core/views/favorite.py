@@ -3,28 +3,8 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes, renderer_classes
 from rest_framework.renderers import JSONRenderer
 from rest_framework.permissions import IsAuthenticated
-from rest_framework import viewsets
-from .serializers import PokemonSerializer, TypeSerializer, UserSerializer
-from .models import Pokemon, Type, UserFavoritePokemon
-
-
-class PokemonViewSet(viewsets.ModelViewSet):
-    serializer_class = PokemonSerializer
-    queryset = Pokemon.objects.all()
-
-
-class TypeViewset(viewsets.ModelViewSet):
-    serializer_class = TypeSerializer
-    queryset = Type.objects.all()
-
-
-@api_view(["GET"])
-@renderer_classes((JSONRenderer,))
-def logged_in_user_view(request):
-    if request.user.is_authenticated:
-        return Response(UserSerializer(request.user).data)
-    return Response()
-
+from ..serializers import PokemonSerializer
+from ..models import Pokemon, UserFavoritePokemon
 
 @api_view(["GET"])
 @renderer_classes((JSONRenderer,))
