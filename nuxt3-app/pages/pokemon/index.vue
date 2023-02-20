@@ -35,8 +35,8 @@ export default {
       if (!this.url) {
         return;
       }
-      setTimeout(() => {        
-          makeApiCall(this.url)
+      setTimeout(() => {
+        makeApiCall(this.url)
           .then((response) => {
             this.url = response.next;
             if (response.results.length > 1) {
